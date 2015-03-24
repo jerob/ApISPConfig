@@ -172,6 +172,10 @@ class IndexController extends AbstractActionController {
 
 	        if ($client->sites_web_domain_get($session_id, $username)==null) {
 
+	        	/*
+	        	 * ADD CLIENT
+	        	 *
+	        	 */ 
 	            $params                        = array();
 	            $params['contact_name']        = $username;
 	            $params['country']             = 'FR';
@@ -180,19 +184,24 @@ class IndexController extends AbstractActionController {
 	            $params['email']               = $email;
 	            $params['usertheme']           = 'default';
 	            $params['web_php_options']     = 'fast-cgi';
-	            $params['ssh_chroot']          = 'jailkit';
+	            // $params['ssh_chroot']          = 'jailkit';
 	            $params['limit_web_quota']     = '1000';
 	            $params['limit_database']      = '1';
 	            $params['limit_database_user'] = '1';
 	            $params['limit_web_domain']    = '1';
 	            $params['limit_ftp_user']      = '1';
+	            // if($client['force_suexec'])
 	            // $params['force_suexec']        = 'y';
 	            $params['limit_shell_user']    = '1';
-	            $params['ssh_chroot']          = 'jailkit';
+	            // $params['ssh_chroot']          = 'jailkit';
 	            $params['default_webserver']   = '1';
 
 	            $sys_userid = $client->client_add($session_id, $reseller_id, $params);
 
+	            /*
+	        	 * ADD DOMAIN
+	        	 *
+	        	 */
 	            $params                      = array();
 	            $params['sys_userid']        = $sys_userid;
 	            $params['sys_groupid']       = $sys_userid;
@@ -212,6 +221,10 @@ class IndexController extends AbstractActionController {
 
 	            $domain_id = $client->sites_web_domain_add($session_id, $sys_userid, $params);
 
+	            /*
+	        	 * ADD DATABASE USER
+	        	 *
+	        	 */
 	            $db_username = 'c'.$sys_userid.'db_user';
 	            $params                      = array();
 	            $params['sys_userid']        = $sys_userid;
@@ -221,6 +234,10 @@ class IndexController extends AbstractActionController {
 
 	            $database_user = $client->sites_database_user_add($session_id, $sys_userid, $params);
 
+	            /*
+	        	 * ADD DATABASE
+	        	 *
+	        	 */
 	            $db_name = str_replace('.', '_', $username);
 	            $params                      = array();
 	            $params['sys_userid']        = $sys_userid;
@@ -236,6 +253,10 @@ class IndexController extends AbstractActionController {
 
 	            $client->sites_database_add($session_id, $sys_userid, $params);
 
+	            /*
+	        	 * ADD MAIL USER
+	        	 *
+	        	 */
 				/*
 	            $params = array(
 	                        'server_id' => 1,
@@ -264,6 +285,11 @@ class IndexController extends AbstractActionController {
 	                        );
 	            $client->mail_user_add($session_id, $sys_userid, $params);
 				*/
+
+				/*
+	        	 * ADD FTP USER
+	        	 *
+	        	 */
 	            /*
 	            $params                      = array();
 	            $params['sys_userid']        = $sys_userid;
@@ -281,6 +307,10 @@ class IndexController extends AbstractActionController {
 	            $client->sites_ftp_user_add($session_id, $sys_userid, $params);
 	            */
 
+	            /*
+	        	 * ADD SHELL USER
+	        	 *
+	        	 */
 	            $params                      = array();
 	            $params['server_id']         = 1;
 	            $params['parent_domain_id']  = $domain_id;
