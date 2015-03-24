@@ -28,7 +28,7 @@ class IndexController extends AbstractActionController {
      *                                      characters once in the string.
      * @return  string
      */
-    private static function random_string( $length=16, $human_friendly = FALSE, $include_symbols = TRUE, $no_duplicate_chars = FALSE )
+    private function random_string( $length=16, $human_friendly = FALSE, $include_symbols = TRUE, $no_duplicate_chars = FALSE )
     {
         $nice_chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefhjkmnprstuvwxyz23456789';
         $all_an     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
@@ -113,11 +113,11 @@ class IndexController extends AbstractActionController {
 
 		$port        = $app->config('ispconfig.port');
 		$server      = $app->config('ispconfig.server');
+		$reseller_id = $app->config('ispconfig.reseller_id');
 		$location    = 'https://' . $server . ':' . $port . '/remote/index.php';
 		$uri         = 'https://' . $server . ':' . $port . '/remote/';
 		$login       = $app->config('ispconfig.login');
 		$password    = $app->config('ispconfig.password');
-		$reseller_id = 46;
 
 		// /usr/local/ispconfig/interface/lib/classes/remoting.inc.php
 		// https://github.com/cyberkathosting/ispconfig3/tree/master/remoting_client/examples

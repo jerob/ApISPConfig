@@ -1,41 +1,55 @@
-
 <html>
 	<head>
 		<title>ApiSPConfig</title>
-		<style>body{margin:0;padding:30px;font:12px/1.5 Helvetica,Arial,Verdana,sans-serif;}h1{margin:0;font-size:48px;font-weight:normal;line-height:48px;}strong{display:inline-block;width:65px;}</style>
+		<style>
+			body {
+				margin:0;
+				padding:30px;
+				font:12px/1.5 Helvetica,Arial,Verdana,sans-serif;
+			}
+			h1 {
+				margin:0;
+				font-size:48px;
+				font-weight:normal;
+				line-height:48px;
+			}
+			strong {
+				display:inline-block;
+				width:65px;
+			}
+		</style>
 	</head>
 	<body>
-<?php
-/*
-    echo $this->flashMessenger()->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
-    echo $this->flashMessenger()->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
-    echo $this->flashMessenger()->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
-    echo $this->flashMessenger()->render('success', array('alert', 'alert-dismissable', 'alert-success'));
-   */
-?>
+		<?php
+		/*
+		    echo $this->flashMessenger()->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+		    echo $this->flashMessenger()->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+		    echo $this->flashMessenger()->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+		    echo $this->flashMessenger()->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+		   */
+		?>
 
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<form method="POST" action="<?= $basePath ?>/thanks">
+						<p>
+							Email :<br />
+							<input type="text" name="email" ?/>
+						</p>
+						<p>
+							Website :<br />
+							<input type="text" name="username" />
+						</p>
+						<p>
+							<textarea style="width:400px;height:200px;">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</textarea>
+						</p>
+						<p><input type="checkbox" name="accept" /> Accept</p>
+						<input type="submit" class="btn" />
+					</form>
+				</div>
+			</div>
+		</div>
 
-<div class="container">
-<div class="row">
-	<div class="span12">
-<form method="POST" action="<?= $basePath ?>/thanks">
-	<p>
-		Email :<br />
-		<input type="text" name="email" ?/>
-	</p>
-	<p>
-		Website :<br />
-		<input type="text" name="username" />
-	</p>
-	<p>
-		<textarea style="width:400px;height:200px;">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</textarea>
-	</p>
-	<p><input type="checkbox" name="accept" /> Accept</p>
-	<input type="submit" class="btn" />
-</form>
-</div>
-</div>
-</div>
-
-</body>
+	</body>
 </html>
