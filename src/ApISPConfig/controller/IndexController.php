@@ -1,10 +1,7 @@
 <?php
 namespace ApISPConfig\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
-
-class IndexController extends AbstractActionController {
+class IndexController {
 
     /**
      * Generates a string of random characters.
